@@ -34,7 +34,7 @@ MMAction2로 슛, 패스 등 다양한 축구 행동을 인식하는 모델을 �
 
 - ###### 👥팀 구성
   chohyomin
-  kheejae 
+  ,kheejae 
 
  
  🤝협업 방식
