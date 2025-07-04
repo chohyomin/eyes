@@ -35,7 +35,7 @@ for filename in os.listdir(INPUT_FOLDER):
 
     output_file = os.path.splitext(filename)[0] + '.npy'
     np.save(os.path.join(OUTPUT_FOLDER, output_file), np.array(all_landmarks))
-    print(f'✅ 저장 완료: {output_file}')
+    print(f' 저장 완료: {output_file}')
 
 pose.close()
 
