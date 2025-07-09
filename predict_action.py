@@ -37,9 +37,20 @@ while cap.isOpened():
 cap.release()
 
 # 평균 포즈 벡터 사용
+
 if keypoints_all:
     avg_keypoints = np.mean(keypoints_all, axis=0).reshape(1, -1)
-    prediction = clf.predict(avg_keypoints)
-    print(f'🎯 예측된 행동: {prediction[0]}')
+    
+    # 각 클래스('pass', 'other' 등)에 대한 예측 확률을 계산
+    probabilities = clf.predict_proba(avg_keypoints)
+    
+    # 가장 높은 확률과 그때의 클래스(행동) 이름 가져오기
+    max_proba = np.max(probabilities)
+    prediction_index = np.argmax(probabilities)
+    prediction_label = clf.classes_[prediction_index]
+
+    # 예측된 행동과 확신도를 함께 출력
+    print(f'🎯 예측된 행동: {prediction_label} (확신도: {max_proba:.2%})')
+
 else:
     print("❌ 영상에서 포즈를 추출하지 못했습니다.")
